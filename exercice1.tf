@@ -20,12 +20,13 @@ resource "google_compute_instance" "vm_instance" {
     access_config {
     }
   }
-  metadata_startup_script = "apt-get -y update && apt-get -y upgrade && apt-get -y install apache2"
+  metadata_startup_script = "apt-get -y update && apt-get -y upgrade && apt-get -y install apache2 && systemctl start apache2"
 }
-
-
 
 resource "google_compute_network" "my-network" {
   name                    = "terraform-network"
   auto_create_subnetworks = "true"
 }
+
+//Need a firewall rule here to allow incoming http (TCP 80)
+//to all instances on the terraform-network
