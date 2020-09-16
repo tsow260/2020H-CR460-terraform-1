@@ -23,13 +23,6 @@ resource "google_compute_instance" "vm_instance" {
   metadata_startup_script = "apt-get -y update && apt-get -y upgrade && apt-get -y install apache2"
 }
 
-
-
-resource "google_compute_network" "my-network" {
-  name                    = "terraform-network"
-  auto_create_subnetworks = "true"
-}
-
 resource "google_compute_network" "my-network" {
   name                    = "terraform-network"
   auto_create_subnetworks = "true"
